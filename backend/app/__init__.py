@@ -68,6 +68,16 @@ def create_app(config_class=Config):
     app.register_blueprint(simulation_bp, url_prefix='/api/simulation')
     app.register_blueprint(report_bp, url_prefix='/api/report')
     
+    # MCP Daemon — auto-start (non-blocking)
+    try:
+        from .api.mcp_daemon import init_mcp_daemon, mcp_bp
+        app.register_blueprint(mcp_bp)
+        # Start in background after app is ready
+        import threading
+        threading.Timer(3.0, init_mcp_daemon, args=[app]).start()
+    except Exception as e:
+        app.logger.warning(f"MCP daemon init skipped: {e}")
+    
     # 健康检查
     @app.route('/health')
     def health():

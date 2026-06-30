@@ -1,0 +1,66 @@
+{
+  "teams": {
+    "prediksi": {
+      "name": "Tim Prediksi Piala Dunia",
+      "description": "Tim AI multi-provider untuk prediksi dan analisis",
+      "workflow": "sequential",
+      "agents": [
+        {
+          "name": "Analis Data",
+          "role": "Mengumpulkan dan menganalisis data statistik",
+          "provider": "atomesus",
+          "model": "cipher",
+          "temperature": 0.3,
+          "system_prompt": "Kamu adalah analis data ahli. Fokus pada fakta, angka, dan statistik. Gunakan Bahasa Indonesia."
+        },
+        {
+          "name": "Strategist",
+          "role": "Membaca pola dan menyusun strategi",
+          "provider": "atomesus",
+          "model": "cipher",
+          "temperature": 0.5,
+          "system_prompt": "Kamu adalah ahli strategi. Baca pola dari data, buat koneksi, dan susun strategi. Gunakan Bahasa Indonesia."
+        },
+        {
+          "name": "Kreator",
+          "role": "Memberikan perspektif kreatif dan out-of-the-box",
+          "provider": "gemini",
+          "model": "gemini-2.0-flash-lite",
+          "temperature": 0.8,
+          "system_prompt": "Kamu是 pemikir kreatif. Berikan ide-ide unik dan perspektif berbeda. Gunakan Bahasa Indonesia."
+        },
+        {
+          "name": "Kritikus",
+          "role": "Menantang asumsi dan mencari kelemahan",
+          "provider": "atomesus",
+          "model": "cipher",
+          "temperature": 0.6,
+          "system_prompt": "Kamu adalah kritikus. Tantang setiap asumsi, cari kelemahan, dan minta bukti. Gunakan Bahasa Indonesia."
+        }
+      ]
+    },
+    "default": {
+      "name": "Tim Standar",
+      "description": "Tim AI serbaguna untuk tugas umum",
+      "workflow": "parallel",
+      "agents": [
+        {
+          "name": "Peneliti",
+          "role": "Mencari dan memverifikasi informasi",
+          "provider": "atomesus",
+          "model": "cipher",
+          "temperature": 0.2,
+          "system_prompt": "Kamu adalah peneliti. Selalu verifikasi fakta dan berikan sumber. Gunakan Bahasa Indonesia."
+        },
+        {
+          "name": "Penulis",
+          "role": "Menyusun output yang jelas dan terstruktur",
+          "provider": "gemini",
+          "model": "gemini-2.0-flash-lite",
+          "temperature": 0.4,
+          "system_prompt": "Kamu adalah penulis. Susun output dengan struktur yang jelas, rapi, dan mudah dibaca. Gunakan Bahasa Indonesia."
+        }
+      ]
+    }
+  }
+}

@@ -1,203 +1,293 @@
 <div align="center">
 
-<img src="./static/image/MiroFish_logo_compressed.jpeg" alt="MiroFish Logo" width="75%"/>
+<img src="https://img.shields.io/badge/Version-2.0.0-blue?style=for-the-badge" alt="Version">
+<img src="https://img.shields.io/badge/License-AGPL--3.0-green?style=for-the-badge" alt="License">
+<img src="https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
+<img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
 
-<a href="https://trendshift.io/repositories/16144" target="_blank"><img src="https://trendshift.io/api/badge/repositories/16144" alt="666ghj%2FMiroFish | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+<br><br>
 
-简洁通用的群体智能引擎，预测万物
-</br>
-<em>A Simple and Universal Swarm Intelligence Engine, Predicting Anything</em>
+# 🐟 MiroFish Agent
 
-<a href="https://www.shanda.com/" target="_blank"><img src="./static/image/shanda_logo.png" alt="666ghj%2FMiroFish | Shanda" height="40"/></a>
+### Enhanced Fork — Multi-Agent AI Prediction Engine
 
-[![GitHub Stars](https://img.shields.io/github/stars/666ghj/MiroFish?style=flat-square&color=DAA520)](https://github.com/666ghj/MiroFish/stargazers)
-[![GitHub Watchers](https://img.shields.io/github/watchers/666ghj/MiroFish?style=flat-square)](https://github.com/666ghj/MiroFish/watchers)
-[![GitHub Forks](https://img.shields.io/github/forks/666ghj/MiroFish?style=flat-square)](https://github.com/666ghj/MiroFish/network)
-[![Docker](https://img.shields.io/badge/Docker-Build-2496ED?style=flat-square&logo=docker&logoColor=white)](https://hub.docker.com/)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/666ghj/MiroFish)
+**Fork dari [MiroFish](https://github.com/666ghj/MiroFish) oleh [666ghj](https://github.com/666ghj)**  
+Ditambahkan: MCP Data Tools · Multi-Provider LLM · Agent Skills · Bahasa Indonesia
 
-[![Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white)](http://discord.gg/ePf5aPaHnA)
-[![X](https://img.shields.io/badge/X-Follow-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/mirofish_ai)
-[![Instagram](https://img.shields.io/badge/Instagram-Follow-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/mirofish_ai/)
+<br>
 
-[English](./README.md) | [中文文档](./README-ZH.md)
+[![Original MiroFish](https://img.shields.io/badge/Original-MiroFish-ff6b6b?style=for-the-badge&logo=github)](https://github.com/666ghj/MiroFish)
+[![Groq Free](https://img.shields.io/badge/Groq-GRATIS-4CAF50?style=for-the-badge)](https://console.groq.com/keys)
+[![Gemini Free](https://img.shields.io/badge/Gemini-GRATIS-4285F4?style=for-the-badge&logo=google)](https://aistudio.google.com/apikey)
 
 </div>
 
-## ⚡ Overview
+---
 
-**MiroFish** is a next-generation AI prediction engine powered by multi-agent technology. By extracting seed information from the real world (such as breaking news, policy drafts, or financial signals), it automatically constructs a high-fidelity parallel digital world. Within this space, thousands of intelligent agents with independent personalities, long-term memory, and behavioral logic freely interact and undergo social evolution. You can inject variables dynamically from a "God's-eye view" to precisely deduce future trajectories — **rehearse the future in a digital sandbox, and win decisions after countless simulations**.
+## 📖 Tentang
 
-> You only need to: Upload seed materials (data analysis reports or interesting novel stories) and describe your prediction requirements in natural language</br>
-> MiroFish will return: A detailed prediction report and a deeply interactive high-fidelity digital world
+**MiroFish** adalah mesin prediksi berbasis **kecerdasan sekumul (swarm intelligence)** yang menggunakan teknologi multi-agent. Dengan mengekstraksi informasi seed dari dunia nyata, MiroFish secara otomatis membangun dunia digital paralel di mana ribuan agen cerdas berinteraksi dan berevolusi sosial.
 
-### Our Vision
+> ⭐ **Repository asli:** [github.com/666ghj/MiroFish](https://github.com/666ghj/MiroFish)  
+> 🍴 **Fork ini** menambahkan fitur MCP, multi-provider, agent skills, dan Bahasa Indonesia.
 
-MiroFish is dedicated to creating a swarm intelligence mirror that maps reality. By capturing the collective emergence triggered by individual interactions, we break through the limitations of traditional prediction:
+---
 
-- **At the Macro Level**: We are a rehearsal laboratory for decision-makers, allowing policies and public relations to be tested at zero risk
-- **At the Micro Level**: We are a creative sandbox for individual users — whether deducing novel endings or exploring imaginative scenarios, everything can be fun, playful, and accessible
+## ✨ Apa yang Ditambahkan di Fork Ini?
 
-From serious predictions to playful simulations, we let every "what if" see its outcome, making it possible to predict anything.
+| Fitur | Original | Fork Ini |
+|-------|----------|----------|
+| 📄 Upload Dokumen | ✅ | ✅ |
+| 🖼️ Analisis Gambar | ❌ | ✅ AI Vision |
+| 🔗 Fetch URL | ❌ | ✅ + Screenshot |
+| 🖥️ Review Localhost | ❌ | ✅ UI Analysis |
+| 🌐 MCP Data Tools | ❌ | ✅ **11 tools GRATIS** |
+| 🤖 Multi-Provider LLM | ❌ (1 provider) | ✅ **6 provider** |
+| 🏦 Agent Skills | ❌ | ✅ **9 skill bawaan** |
+| 💰 Cost-Saving Router | ❌ | ✅ Pilih termurah |
+| 🇮🇩 Bahasa Indonesia | ❌ | ✅ 665+ key |
+| 📊 History & Replay | ❌ | ✅ Lihat + Hapus |
+| 🔄 MCP Daemon | ❌ | ✅ Auto-update data |
 
-## 🌐 Live Demo
-
-Welcome to visit our online demo environment and experience a prediction simulation on trending public opinion events we've prepared for you: [mirofish-live-demo](https://666ghj.github.io/mirofish-demo/)
-
-## 📸 Screenshots
-
-<div align="center">
-<table>
-<tr>
-<td><img src="./static/image/Screenshot/运行截图1.png" alt="Screenshot 1" width="100%"/></td>
-<td><img src="./static/image/Screenshot/运行截图2.png" alt="Screenshot 2" width="100%"/></td>
-</tr>
-<tr>
-<td><img src="./static/image/Screenshot/运行截图3.png" alt="Screenshot 3" width="100%"/></td>
-<td><img src="./static/image/Screenshot/运行截图4.png" alt="Screenshot 4" width="100%"/></td>
-</tr>
-<tr>
-<td><img src="./static/image/Screenshot/运行截图5.png" alt="Screenshot 5" width="100%"/></td>
-<td><img src="./static/image/Screenshot/运行截图6.png" alt="Screenshot 6" width="100%"/></td>
-</tr>
-</table>
-</div>
-
-## 🎬 Demo Videos
-
-### 1. Wuhan University Public Opinion Simulation + MiroFish Project Introduction
-
-<div align="center">
-<a href="https://www.bilibili.com/video/BV1VYBsBHEMY/" target="_blank"><img src="./static/image/武大模拟演示封面.png" alt="MiroFish Demo Video" width="75%"/></a>
-
-Click the image to watch the complete demo video for prediction using BettaFish-generated "Wuhan University Public Opinion Report"
-</div>
-
-### 2. Dream of the Red Chamber Lost Ending Simulation
-
-<div align="center">
-<a href="https://www.bilibili.com/video/BV1cPk3BBExq" target="_blank"><img src="./static/image/红楼梦模拟推演封面.jpg" alt="MiroFish Demo Video" width="75%"/></a>
-
-Click the image to watch MiroFish's deep prediction of the lost ending based on hundreds of thousands of words from the first 80 chapters of "Dream of the Red Chamber"
-</div>
-
-> **Financial Prediction**, **Political News Prediction** and more examples coming soon...
-
-## 🔄 Workflow
-
-1. **Graph Building**: Seed extraction & Individual/collective memory injection & GraphRAG construction
-2. **Environment Setup**: Entity relationship extraction & Persona generation & Agent configuration injection
-3. **Simulation**: Dual-platform parallel simulation & Auto-parse prediction requirements & Dynamic temporal memory updates
-4. **Report Generation**: ReportAgent with rich toolset for deep interaction with post-simulation environment
-5. **Deep Interaction**: Chat with any agent in the simulated world & Interact with ReportAgent
+---
 
 ## 🚀 Quick Start
 
-### Option 1: Source Code Deployment (Recommended)
-
-#### Prerequisites
-
-| Tool | Version | Description | Check Installation |
-|------|---------|-------------|-------------------|
-| **Node.js** | 18+ | Frontend runtime, includes npm | `node -v` |
-| **Python** | ≥3.11, ≤3.12 | Backend runtime | `python --version` |
-| **uv** | Latest | Python package manager | `uv --version` |
-
-#### 1. Configure Environment Variables
-
 ```bash
-# Copy the example configuration file
+# 1. Clone
+git clone https://github.com/YOUR_USERNAME/mirofish-agent.git
+cd mirofish-agent
+
+# 2. Setup API key (pilih minimal 1 provider GRATIS)
 cp .env.example .env
+nano .env
 
-# Edit the .env file and fill in the required API keys
-```
-
-**Required Environment Variables:**
-
-```env
-# LLM API Configuration (supports any LLM API with OpenAI SDK format)
-# Recommended: Alibaba Qwen-plus model via Bailian Platform: https://bailian.console.aliyun.com/
-# High consumption, try simulations with fewer than 40 rounds first
-LLM_API_KEY=your_api_key
-LLM_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
-LLM_MODEL_NAME=qwen-plus
-
-# Zep Cloud Configuration
-# Free monthly quota is sufficient for simple usage: https://app.getzep.com/
-ZEP_API_KEY=your_zep_api_key
-```
-
-#### 2. Install Dependencies
-
-```bash
-# One-click installation of all dependencies (root + frontend + backend)
+# 3. Install semua dependensi
 npm run setup:all
-```
 
-Or install step by step:
-
-```bash
-# Install Node dependencies (root + frontend)
-npm run setup
-
-# Install Python dependencies (backend, auto-creates virtual environment)
-npm run setup:backend
-```
-
-#### 3. Start Services
-
-```bash
-# Start both frontend and backend (run from project root)
+# 4. Jalankan!
 npm run dev
 ```
 
-**Service URLs:**
-- Frontend: `http://localhost:3000`
-- Backend API: `http://localhost:5001`
+**Buka browser:** http://localhost:3000
 
-**Start Individually:**
+---
+
+## 🔑 Provider LLM
+
+| Provider | Biaya | Daftar | Model | Kecepatan |
+|----------|-------|--------|-------|-----------|
+| 🦙 **Groq** | **GRATIS** 30 RPM | [Daftar](https://console.groq.com/keys) | Llama 3.3 70B | ⚡⚡⚡ |
+| 🆓 **Gemini** | **GRATIS** 1500/hari | [Daftar](https://aistudio.google.com/apikey) | Gemini 2.0 Flash | ⚡⚡ |
+| 🏆 **Atomesus** | Plan-based | [Daftar](https://www.atomesus.com/dashboard) | Cipher | ⚡⚡⚡ |
+| 🤖 **Together AI** | **GRATIS** 60 RPM | [Daftar](https://api.together.xyz/settings/api-keys) | Llama 3.1 8B | ⚡⚡ |
+| 💻 **Ollama** | **GRATIS** lokal | [Install](https://ollama.com) | Llama 3.2 | ⚡ |
+
+> 💡 **Groq + Gemini = 100% GRATIS**, tanpa kartu kredit!
+
+---
+
+## 🌐 MCP Data Agent — 11 Tools Real-Time
+
+| # | Tool | Perintah | Sumber | Gratis? |
+|---|------|----------|--------|---------|
+| 1 | 🔍 **Search** | `search <query>` | Google News | ✅ |
+| 2 | 📰 **Berita** | `news <topic>` | Google News | ✅ |
+| 3 | 🌤️ **Cuaca** | `weather <kota>` | wttr.in | ✅ |
+| 4 | 🌏 **Negara** | `country <nama>` | REST Countries | ✅ |
+| 5 | 💱 **Kurs** | `kurs USD/IDR` | Exchange Rate | ✅ |
+| 6 | ₿ **Crypto** | `crypto bitcoin` | CoinGecko | ✅ |
+| 7 | 🏅 **Emas** | `emas` | Gold API | ✅ |
+| 8 | 📈 **Saham** | `saham IHSG` | Google News | ✅ |
+| 9 | 📊 **Ekonomi** | `ekonomi Indonesia` | Google News | ✅ |
+| 10 | 📚 **Wikipedia** | `wiki <query>` | Wikipedia | ✅ |
+| 11 | 🤖 **Auto** | `auto <query>` | Auto-detect | ✅ |
 
 ```bash
-npm run backend   # Start backend only
-npm run frontend  # Start frontend only
+python3 tools/mcp-client.py kurs USD/IDR
+python3 tools/mcp-client.py crypto bitcoin
+python3 tools/mcp-client.py saham IHSG
 ```
 
-### Option 2: Docker Deployment
+---
+
+## 🧠 9 Agent Skills Bawaan
+
+Setiap agen dalam simulasi otomatis punya 9 skill:
+
+| # | Skill | Fungsi |
+|---|-------|--------|
+| 1 | 🔍 Pencarian Data | Cari info real-time |
+| 2 | 📊 Analisis Terstruktur | Data → Analisis → Kesimpulan |
+| 3 | 👁️ Perspektif Berganda | Multi-sudut pandang |
+| 4 | 🤝 Kolaborasi | Kerja sama antar agen |
+| 5 | 🧠 Berpikir Kritis | Tantang asumsi |
+| 6 | 🌏 Konteks Indonesia | Pahami budaya lokal |
+| 7 | 📈 Berbasis Data | Argumen dengan fakta |
+| 8 | 🏦 Hemat Biaya | Pilih model termurah |
+| 9 | 🌐 Geopolitik | Data global real-time |
+
+---
+
+## 🛠️ CLI Tools
 
 ```bash
-# 1. Configure environment variables (same as source deployment)
-cp .env.example .env
+# Data real-time
+python3 tools/mcp-client.py search "ekonomi Indonesia"
+python3 tools/mcp-client.py kurs USD/IDR
+python3 tools/mcp-client.py weather jakarta
 
-# 2. Pull image and start
+# Chat AI gratis
+python3 tools/free-chat.py --model groq-llama "Analisis IHSG"
+
+# History
+python3 tools/history-viewer.py env
+python3 tools/history-viewer.py hapus sim_xxx
+
+# Monitor
+python3 tools/process-monitor.py
+
+# MCP Daemon (auto-update)
+python3 tools/mcp-daemon.py start
+```
+
+---
+
+## 🌐 API Endpoints
+
+| Method | Endpoint | Fungsi |
+|--------|----------|--------|
+| `GET` | `/health` | Health check |
+| `POST` | `/api/graph/ontology/generate` | Upload & buat ontologi |
+| `POST` | `/api/graph/build` | Bangun grafik pengetahuan |
+| `POST` | `/api/simulation/create` | Buat simulasi |
+| `POST` | `/api/simulation/prepare` | Siapkan lingkungan |
+| `POST` | `/api/simulation/start` | Jalankan simulasi |
+| `GET` | `/api/simulation/:id/run-status` | Status simulasi |
+| `POST` | `/api/report/generate` | Buat laporan prediksi |
+| `POST` | `/api/report/chat` | Chat dengan Report Agent |
+| `POST` | `/api/simulation/interview` | Wawancara agen |
+| `GET` | `/api/mcp/status` | Status MCP daemon |
+
+---
+
+## 📁 Struktur Project
+
+```
+mirofish-agent/
+├── README.md                 ← Dokumentasi
+├── .env.example              ← Template API key (AMAN)
+├── .gitignore                ← Proteksi data sensitif
+├── package.json              ← Dependencies Node.js
+├── docker-compose.yml        ← Docker deployment
+├── LICENSE                   ← AGPL-3.0
+│
+├── frontend/                 ← Vue 3 + Vite
+│   └── src/
+│       ├── views/            ← Halaman web
+│       ├── components/       ← Komponen UI (HistoryDatabase, dll)
+│       ├── i18n/             ← Terjemahan
+│       └── router/           ← Routing
+│
+├── backend/                  ← Flask + Python
+│   ├── app/
+│   │   ├── api/              ← REST API (graph, simulation, report, mcp)
+│   │   ├── services/         ← Business logic
+│   │   ├── agent_skills/     ← 🆕 9 skill bawaan + cost router
+│   │   └── utils/            ← Utilities
+│   ├── scripts/              ← Simulation scripts
+│   └── uploads/              ← Data simulasi (gitignored)
+│
+├── tools/                    ← 🆕 CLI Tools
+│   ├── mcp-client.py         ← 11 MCP data tools
+│   ├── mcp-daemon.py         ← Background data updater
+│   ├── free-chat.py          ← Chat AI gratis
+│   ├── history-viewer.py     ← Lihat & hapus history
+│   ├── simulation-replay.py  ← Replay simulasi
+│   ├── process-monitor.py    ← Monitor proses
+│   ├── analyze-image.py      ← Analisis gambar
+│   ├── fetch-url.py          ← Fetch URL
+│   └── review-localhost.py   ← Review aplikasi
+│
+├── locales/                  ← Terjemahan UI
+│   ├── id.json               ← 🆕 Bahasa Indonesia (665+ key)
+│   ├── en.json               ← English
+│   ├── zh.json               ← 中文
+│   └── languages.json        ← Daftar bahasa
+│
+└── skills/                   ← Agent skill definitions
+    └── pinchtab/             ← Browser control skills
+```
+
+---
+
+## 🐳 Docker
+
+```bash
+# Build & run
 docker compose up -d
+
+# Atau build manual
+docker build -t mirofish-agent .
+docker run -p 3000:3000 -p 5001:5001 mirofish-agent
 ```
 
-Reads `.env` from root directory by default, maps ports `3000 (frontend) / 5001 (backend)`
+---
 
-> Mirror address for faster pulling is provided as comments in `docker-compose.yml`, replace if needed.
+## 📝 Bahasa Indonesia
 
-## 📬 Join the Conversation
+UI MiroFish sudah diterjemahkan ke **8 bahasa**:
+
+| Bahasa | Code | Status |
+|--------|------|--------|
+| 🇮🇩 Bahasa Indonesia | `id` | ✅ Default |
+| 🇺🇸 English | `en` | ✅ |
+| 🇨🇳 中文 | `zh` | ✅ |
+| 🇪🇸 Español | `es` | ✅ |
+| 🇫🇷 Français | `fr` | ✅ |
+| 🇵🇹 Português | `pt` | ✅ |
+| 🇷🇺 Русский | `ru` | ✅ |
+| 🇩🇪 Deutsch | `de` | ✅ |
+
+---
+
+## 🤝 Kontribusi
+
+1. Fork repository ini
+2. Buat branch: `git checkout -b feature/nama-fitur`
+3. Commit: `git commit -m "feat: tambah fitur X"`
+4. Push: `git push origin feature/nama-fitur`
+5. Buat Pull Request
+
+---
+
+## 🙏 Credits
+
+| Kontribusi | Author |
+|------------|--------|
+| **MiroFish Original** | [666ghj](https://github.com/666ghj) |
+| **CAMEL-OASIS Engine** | [camel-ai](https://github.com/camel-ai) |
+| **Zep Memory Graph** | [getzep](https://github.com/getzep) |
+| **MCP Data Tools** | Fork Enhancement |
+| **Multi-Provider** | Fork Enhancement |
+| **Agent Skills** | Fork Enhancement |
+| **Bahasa Indonesia** | Fork Enhancement |
+
+---
+
+## 📄 License
+
+[AGPL-3.0](LICENSE) — Sesuai dengan license original MiroFish.
+
+---
 
 <div align="center">
-<img src="./static/image/QQ群.png" alt="QQ Group" width="60%"/>
+
+**Original:** [github.com/666ghj/MiroFish](https://github.com/666ghj/MiroFish)  
+**Fork ini:** [github.com/YOUR_USERNAME/mirofish-agent](https://github.com/YOUR_USERNAME/mirofish-agent)
+
+<br>
+
+🐟 **MiroFish Agent** — Enhanced with MCP, Multi-Provider & Agent Skills
+
 </div>
-
-&nbsp;
-
-The MiroFish team is recruiting full-time/internship positions. If you're interested in multi-agent simulation and LLM applications, feel free to send your resume to: **mirofish@shanda.com**
-
-## 📄 Acknowledgments
-
-**MiroFish has received strategic support and incubation from Shanda Group!**
-
-MiroFish's simulation engine is powered by **[OASIS (Open Agent Social Interaction Simulations)](https://github.com/camel-ai/oasis)**, We sincerely thank the CAMEL-AI team for their open-source contributions!
-
-## 📈 Project Statistics
-
-<a href="https://www.star-history.com/#666ghj/MiroFish&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=666ghj/MiroFish&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=666ghj/MiroFish&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=666ghj/MiroFish&type=date&legend=top-left" />
- </picture>
-</a>

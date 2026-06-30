@@ -33,11 +33,10 @@
         <div class="card-header">
           <span class="card-id">{{ formatSimulationId(project.simulation_id) }}</span>
           <div class="card-status-icons">
-            <span 
-              class="status-icon" 
-              :class="{ available: project.project_id, unavailable: !project.project_id }"
-              :title="$t('history.graphBuild')"
-            >◇</span>
+            <!-- Status badge -->
+            <span class="status-badge" :class="getStatusClass(project)">
+              {{ getStatusLabel(project) }}
+            </span>
             <span 
               class="status-icon available" 
               :title="$t('history.envSetup')"
@@ -77,11 +76,11 @@
           </div>
         </div>
 
-        <!-- 卡片标题（使用模拟需求的前20字作为标题） -->
-        <h3 class="card-title">{{ getSimulationTitle(project.simulation_requirement) }}</h3>
+        <!-- 卡片标题（使用模拟需求或ID） -->
+        <h3 class="card-title">{{ getSimulationTitle(project) }}</h3>
 
-        <!-- 卡片描述（模拟需求完整展示） -->
-        <p class="card-desc">{{ truncateText(project.simulation_requirement, 55) }}</p>
+        <!-- 卡片描述 -->
+        <p class="card-desc">{{ getSimulationDesc(project) }}</p>
 
         <!-- 卡片底部 -->
         <div class="card-footer">
@@ -177,6 +176,13 @@
                 <span class="btn-step">Step4</span>
                 <span class="btn-icon">◆</span>
                 <span class="btn-text">{{ $t('history.step4Button') }}</span>
+              </button>
+            </div>
+            <!-- 删除按钮 -->
+            <div class="modal-delete-section">
+              <button class="modal-delete-btn" @click="deleteProject(selectedProject)">
+                <span class="delete-icon">🗑</span>
+                <span class="delete-text">Hapus Riwayat</span>
               </button>
             </div>
             <!-- 不可回放提示 -->
@@ -337,11 +343,66 @@ const truncateText = (text, maxLength) => {
   return text.length > maxLength ? text.slice(0, maxLength) + '...' : text
 }
 
-// 从模拟需求生成标题（取前20字）
-const getSimulationTitle = (requirement) => {
-  if (!requirement) return t('history.untitledSimulation')
-  const title = requirement.slice(0, 20)
-  return requirement.length > 20 ? title + '...' : title
+// 从项目生成标题
+const getSimulationTitle = (project) => {
+  if (!project) return 'Simulasi'
+  
+  // Prioritaskan project_name
+  if (project.project_name && project.project_name !== '-') {
+    return project.project_name.length > 25 
+      ? project.project_name.slice(0, 25) + '...' 
+      : project.project_name
+  }
+  
+  // Kedua: simulation_requirement
+  const req = project.simulation_requirement
+  if (req && req.trim()) {
+    return req.length > 25 ? req.slice(0, 25) + '...' : req
+  }
+  
+  // Ketiga: simulation_id
+  return formatSimulationId(project.simulation_id)
+}
+
+// Deskripsi simulasi
+const getSimulationDesc = (project) => {
+  if (!project) return ''
+  
+  const req = project.simulation_requirement
+  if (req && req.trim()) {
+    return req.length > 55 ? req.slice(0, 55) + '...' : req
+  }
+  
+  const count = project.files ? project.files.length : 0
+  return `${count} file | ${project.expected_entities_count || '?'} entitas`
+}
+
+// Status badge
+const getStatusClass = (sim) => {
+  if (!sim) return 'unknown'
+  const s = (sim.status || '').toLowerCase()
+  if (s === 'running') return 'status-running'
+  if (s === 'preparing') return 'status-running'
+  if (s === 'ready') return 'status-ready'
+  if (s === 'completed') return 'status-completed'
+  if (s === 'failed' || s === 'error') return 'status-failed'
+  if (s === 'paused') return 'status-paused'
+  return 'status-unknown'
+}
+
+const getStatusLabel = (sim) => {
+  if (!sim) return '?'
+  const s = (sim.status || '').toLowerCase()
+  const labels = {
+    'running': '▶ Berjalan',
+    'preparing': '⏳ Persiapan',
+    'ready': '✓ Siap',
+    'completed': '✅ Selesai',
+    'failed': '✗ Gagal',
+    'error': '✗ Error',
+    'paused': '⏸ Paused'
+  }
+  return labels[s] || s.slice(0, 8)
 }
 
 // 格式化 simulation_id 显示（截取前6位）
@@ -433,6 +494,31 @@ const goToReport = () => {
       params: { reportId: selectedProject.value.report_id }
     })
     closeModal()
+  }
+}
+
+// 删除项目
+const deleteProject = async (simulation) => {
+  if (!confirm('Hapus riwayat ini?')) return
+  
+  try {
+    // Hapus via API
+    const projectId = simulation.project_id
+    const simId = simulation.simulation_id
+    const reportId = simulation.report_id
+    
+    if (reportId) {
+      await fetch(`/api/report/${reportId}`, { method: 'DELETE' })
+    }
+    if (projectId) {
+      await fetch(`/api/graph/project/${projectId}`, { method: 'DELETE' })
+    }
+    
+    // Hapus dari list lokal
+    projects.value = projects.value.filter(p => p.simulation_id !== simId)
+    closeModal()
+  } catch (err) {
+    console.error('Gagal hapus:', err)
   }
 }
 
@@ -711,6 +797,22 @@ onUnmounted(() => {
   align-items: center;
   gap: 6px;
 }
+
+/* Status badge */
+.status-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+}
+.status-badge.status-running { background: #FEF3C7; color: #D97706; }
+.status-badge.status-ready { background: #D1FAE5; color: #059669; }
+.status-badge.status-completed { background: #DBEAFE; color: #2563EB; }
+.status-badge.status-failed { background: #FEE2E2; color: #DC2626; }
+.status-badge.status-paused { background: #F3F4F6; color: #6B7280; }
+.status-badge.status-unknown { background: #F3F4F6; color: #9CA3AF; }
 
 .status-icon {
   font-size: 0.75rem;
@@ -1338,5 +1440,38 @@ onUnmounted(() => {
   letter-spacing: 0.3px;
   text-align: center;
   line-height: 1.5;
+}
+
+/* 删除按钮 */
+.modal-delete-section {
+  display: flex;
+  justify-content: center;
+  padding: 0 32px 20px;
+  background: #FFFFFF;
+}
+
+.modal-delete-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border: 1px solid #FCA5A5;
+  border-radius: 6px;
+  background: #FFF5F5;
+  color: #DC2626;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.modal-delete-btn:hover {
+  background: #FEE2E2;
+  border-color: #EF4444;
+  transform: translateY(-1px);
+}
+
+.delete-icon {
+  font-size: 0.9rem;
 }
 </style>

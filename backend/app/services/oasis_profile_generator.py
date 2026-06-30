@@ -22,6 +22,7 @@ from ..config import Config
 from ..utils.logger import get_logger
 from ..utils.locale import get_language_instruction, get_locale, set_locale, t
 from .zep_entity_reader import EntityNode, ZepEntityReader
+from ..agent_skills import inject_skills_to_persona
 
 logger = get_logger('mirofish.oasis_profile')
 
@@ -253,12 +254,18 @@ class OasisProfileGenerator:
                 entity_attributes=entity.attributes
             )
         
+        # Inject skill bawaan ke persona
+        persona = profile_data.get("persona", entity.summary or f"A {entity_type} named {name}.")
+        profession = profile_data.get("profession", "")
+        is_individual = self._is_individual_entity(entity_type)
+        persona_with_skills = inject_skills_to_persona(persona, entity_type, is_individual, profession)
+        
         return OasisAgentProfile(
             user_id=user_id,
             user_name=user_name,
             name=name,
             bio=profile_data.get("bio", f"{entity_type}: {name}"),
-            persona=profile_data.get("persona", entity.summary or f"A {entity_type} named {name}."),
+            persona=persona_with_skills,
             karma=profile_data.get("karma", random.randint(500, 5000)),
             friend_count=profile_data.get("friend_count", random.randint(50, 500)),
             follower_count=profile_data.get("follower_count", random.randint(100, 1000)),

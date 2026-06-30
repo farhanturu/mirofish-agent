@@ -2,13 +2,16 @@
 .DS_Store
 Thumbs.db
 
-# 环境变量（保护敏感信息）
+# Environment variables (protect sensitive data)
 .env
 .env.local
 .env.*.local
 .env.development
 .env.test
 .env.production
+
+# MCP cache
+.mcp-cache/
 
 # Python
 __pycache__/
@@ -36,7 +39,7 @@ yarn-error.log*
 *.swp
 *.swo
 
-# 测试
+# Test
 .pytest_cache/
 .coverage
 htmlcov/
@@ -45,16 +48,24 @@ htmlcov/
 .cursor/
 .claude/
 
-# 文档与测试程序
+# Documentation & tests
 mydoc/
 mytest/
 
-# 日志文件
+# Log files
 backend/logs/
 *.log
 
-# 上传文件
+# Upload files
 backend/uploads/
 
-# Docker 数据
+# Docker data
 data/
+
+# Sensitive data backups
+*.bak
+*.backup
+
+# Agent skills sensitive data
+.agents/**/.env
+.agents/**/credentials*
