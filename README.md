@@ -55,17 +55,21 @@ Ditambahkan: MCP Data Tools · Multi-Provider LLM · Agent Skills · Bahasa Indo
 
 ```bash
 # 1. Clone
-git clone https://github.com/YOUR_USERNAME/mirofish-agent.git
+git clone https://github.com/farhanturu/mirofish-agent.git
 cd mirofish-agent
 
-# 2. Setup API key (pilih minimal 1 provider GRATIS)
+# 2. Daftar ZEP (GRATIS, WAJIB!)
+#    Buka https://app.getzep.com → Sign up → Copy API key
+
+# 3. Setup API key
 cp .env.example .env
 nano .env
+#    Isi ZEP_API_KEY (wajib) + minimal 1 provider LLM
 
-# 3. Install semua dependensi
+# 4. Install semua dependensi
 npm run setup:all
 
-# 4. Jalankan!
+# 5. Jalankan!
 npm run dev
 ```
 
@@ -73,7 +77,29 @@ npm run dev
 
 ---
 
-## 🔑 Provider LLM
+## 🔑 API Key yang Dibutuhkan
+
+### 🔴 WAJIB: ZEP Memory Graph (GRATIS!)
+
+ZEP digunakan untuk **knowledge graph & memori agent**. Tanpa ZEP, MiroFish **tidak bisa jalan**.
+
+| Info | Detail |
+|------|--------|
+| **Daftar** | https://app.getzep.com |
+| **Biaya** | **GRATIS** untuk penggunaan ringan |
+| **Fungsi** | Knowledge graph, memori agent, GraphRAG |
+| **Wajib?** | ✅ **YA** |
+
+```bash
+# Cara dapat ZEP API key:
+# 1. Buka https://app.getzep.com
+# 2. Sign up (gratis, no credit card)
+# 3. Buka dashboard → copy API key
+# 4. Paste ke .env:
+ZEP_API_KEY=z_your_key_here
+```
+
+### Provider LLM (Pilih Minimal 1)
 
 | Provider | Biaya | Daftar | Model | Kecepatan |
 |----------|-------|--------|-------|-----------|
