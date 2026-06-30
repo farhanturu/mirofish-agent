@@ -1,133 +1,275 @@
 # Skill: mirofish-agent
 
-> **Gunakan skill ini ketika**: User ingin menjalankan simulasi prediksi AI, analisis dokumen/gambar/URL, review website atau aplikasi localhost, prediksi multi-agent, atau cari data real-time dari web.
+> **Gunakan ketika**: User ingin menjalankan simulasi prediksi multi-agent AI, analisis dokumen/gambar/URL, cari data real-time, atau review aplikasi.
 
-## Apa Itu MiroFish?
+## Ringkasan
 
-MiroFish adalah **mesin prediksi & analisis multi-agent** dengan dukungan **multi-provider LLM** dan **MCP data real-time**.
+MiroFish adalah mesin prediksi berbasis kecerdasan sekumul (swarm intelligence). Upload dokumen, gambar, atau URL → MiroFish bangun grafik pengetahuan → simulasi 31+ agen AI berinteraksi → hasilkan laporan prediksi.
 
-| Input | Contoh | Yang Dilakukan |
-|-------|--------|----------------|
-| 📄 **Dokumen** | PDF, TXT, MD | Ekstraksi → grafik pengetahuan → simulasi → prediksi |
-| 🖼️ **Gambar** | Logo, desain, screenshot | Analisis visual via LLM vision |
-| 🔗 **URL/Link** | Website, artikel | Fetch konten + screenshot → analisis |
-| 🖥️ **Localhost** | App di port tertentu | Review UI/HTML → screenshot → skor |
+---
 
-## Cara Menjalankan MiroFish
+## Setup (Sekali Saja)
 
 ```bash
-# Cek apakah sudah jalan
+# 1. Clone
+git clone https://github.com/farhanturu/mirofish-agent.git ~/MiroFish
+cd ~/MiroFish
+
+# 2. Daftar ZEP (WAJIB, GRATIS): https://app.getzep.com
+# 3. Daftar LLM (pilih salah satu, GRATIS):
+#    - Groq: https://console.groq.com/keys
+#    - Gemini: https://aistudio.google.com/apikey
+
+# 4. Buat .env
+cat > .env << 'EOF'
+ZEP_API_KEY=your_zep_key
+GROQ_API_KEY=your_groq_key
+EOF
+
+# 5. Install
+npm run setup:all
+
+# 6. Jalankan
+npm run dev
+```
+
+- Frontend: http://localhost:3000
+- Backend: http://localhost:5001
+
+---
+
+## Menjalankan MiroFish
+
+```bash
+# Cek status
 curl -s http://localhost:5001/health
 
-# Start
+# Start (jika belum jalan)
 cd ~/MiroFish && npm run dev &
-sleep 10
 
 # Stop
 pkill -f "npm run dev"
 ```
 
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5001
+---
 
 ## Provider LLM
 
-| Provider | Model | Biaya | Peran |
-|----------|-------|-------|-------|
-| 🦙 **Groq** 🆓 | `llama-3.3-70b-versatile` | **GRATIS 30 RPM** | Primary — ChatGPT-quality |
-| 🆓 **Gemini** 🆓 | `gemini-2.0-flash` | **GRATIS 1500/hari** | Backup — Google AI |
-| 🏆 **Atomesus** | `cipher` | Plan-based | Cadangan premium |
-| 🤖 **Together AI** 🆓 | `Llama-3.3-70B` | **GRATIS 60 RPM** | Alternatif open-source |
-| 💻 **Ollama** 🆓 | `llama3.2` | **GRATIS lokal** | 100% Privat |
+| Provider | Biaya | Daftar |
+|----------|-------|--------|
+| 🦙 Groq | GRATIS 30 RPM | https://console.groq.com/keys |
+| 🆓 Gemini | GRATIS 1500/hari | https://aistudio.google.com/apikey |
+| 🏆 Atomesus | Plan-based | https://www.atomesus.com/dashboard |
+| 🤖 Together AI | GRATIS 60 RPM | https://api.together.xyz/settings/api-keys |
+| 💻 Ollama | GRATIS lokal | `ollama pull llama3.2` |
 
-## MCP Data Agent — 11 Tools (GRATIS)
-
-| # | Tool | Perintah | Sumber |
-|---|------|----------|--------|
-| 1 | 🔍 **Search** | `search <q>` | Google News |
-| 2 | 📰 **Berita** | `news <q>` | Google News |
-| 3 | 🌤️ **Cuaca** | `weather <lokasi>` | wttr.in |
-| 4 | 🌏 **Negara** | `country <name>` | REST Countries |
-| 5 | 💱 **Kurs** | `kurs USD/IDR` | Exchange Rate API |
-| 6 | ₿ **Crypto** | `crypto bitcoin` | CoinGecko |
-| 7 | 🏅 **Emas** | `emas` | Gold API |
-| 8 | 📈 **Saham** | `saham IHSG` | Google News |
-| 9 | 📊 **Ekonomi** | `ekonomi Indonesia` | Google News |
-| 10 | 📚 **Wikipedia** | `wiki <q>` | Wikipedia API |
-| 11 | 🤖 **Auto** | `auto <q>` | Auto-detect |
-
-```bash
-python3 ~/MiroFish/tools/mcp-client.py search "ekonomi Indonesia 2026"
-python3 ~/MiroFish/tools/mcp-client.py kurs USD/IDR
-python3 ~/MiroFish/tools/mcp-client.py crypto bitcoin
+Isi di `.env`:
+```
+GROQ_API_KEY=gsk_xxx
+GEMINI_API_KEY=xxx
+ZEP_API_KEY=z_xxx
 ```
 
-## Team Agent — Multi-Provider + Shared Memory
+---
 
-| Tim | Agent | Provider | Peran |
-|-----|-------|----------|-------|
-| **Standar** | Analis Data | Groq | Kumpulkan data |
-| | Sintesis | Groq | Analisis & kesimpulan |
-| **Prediksi** | Analis Data | Groq | Data & statistik |
-| | Strategist | Groq | Pola & strategi |
-| | Kreator | Gemini | Ide kreatif |
-| | Kritikus | Groq | Validasi |
-| **Dev** | Implementer | Groq | Coding |
-| | Reviewer | Gemini | Review kode |
-| | Tester | Groq | Test coverage |
+## Alur Prediksi Lengkap
 
+### 1. Upload Dokumen → Buat Ontologi
 ```bash
-python3 ~/.agents/skills/team-agent/team-manager.py default "Analisis ekonomi"
-python3 ~/.agents/skills/team-agent/team-manager.py prediksi "Prediksi IHSG"
-python3 ~/.agents/skills/team-agent/team-manager.py dev "Buat fungsi fibonacci"
+curl -X POST http://localhost:5001/api/graph/ontology/generate \
+  -F "files=@dokumen.pdf" \
+  -F "simulation_requirement=Prediksi dampak kebijakan X"
 ```
 
-## History & Replay
+### 2. Bangun Grafik Pengetahuan
+```bash
+curl -X POST http://localhost:5001/api/graph/build \
+  -H "Content-Type: application/json" \
+  -d '{"project_id": "proj_xxx"}'
+```
+
+### 3. Buat Simulasi
+```bash
+curl -X POST http://localhost:5001/api/simulation/create \
+  -H "Content-Type: application/json" \
+  -d '{"project_id": "proj_xxx"}'
+```
+
+### 4. Siapkan Lingkungan
+```bash
+curl -X POST http://localhost:5001/api/simulation/prepare \
+  -H "Content-Type: application/json" \
+  -d '{"simulation_id": "sim_xxx"}'
+```
+
+### 5. Jalankan Simulasi
+```bash
+curl -X POST http://localhost:5001/api/simulation/start \
+  -H "Content-Type: application/json" \
+  -d '{"simulation_id": "sim_xxx", "max_rounds": 30}'
+```
+
+### 6. Monitor Progress
+```bash
+curl http://localhost:5001/api/simulation/sim_xxx/run-status
+```
+
+### 7. Buat Laporan
+```bash
+curl -X POST http://localhost:5001/api/report/generate \
+  -H "Content-Type: application/json" \
+  -d '{"simulation_id": "sim_xxx"}'
+```
+
+### 8. Ambil Laporan
+```bash
+curl http://localhost:5001/api/report/report_xxx
+```
+
+---
+
+## MCP Data Tools (Real-Time, GRATIS)
 
 ```bash
-# Lihat history
-python3 ~/MiroFish/tools/history-viewer.py env
-python3 ~/MiroFish/tools/history-viewer.py sims
+cd ~/MiroFish
+
+# Berita
+python3 tools/mcp-client.py news "ekonomi Indonesia"
+
+# Kurs
+python3 tools/mcp-client.py kurs USD/IDR
+
+# Crypto
+python3 tools/mcp-client.py crypto bitcoin
+
+# Cuaca
+python3 tools/mcp-client.py weather jakarta
+
+# Info negara
+python3 tools/mcp-client.py country indonesia
+
+# Indeks saham
+python3 tools/mcp-client.py saham IHSG
+
+# Ekonomi
+python3 tools/mcp-client.py ekonomi Indonesia
+
+# Wikipedia
+python3 tools/mcp-client.py wiki "Piala Dunia 2026"
+
+# Auto-detect
+python3 tools/mcp-client.py auto "berapa harga bitcoin?"
+```
+
+---
+
+## Chat dengan AI (GRATIS)
+
+```bash
+cd ~/MiroFish
+
+# Groq (gratis, cepat)
+GROQ_API_KEY=gsk_xxx python3 tools/free-chat.py --model groq-llama "Analisis IHSG"
+
+# Gemini (gratis)
+GEMINI_API_KEY=xxx python3 tools/free-chat.py "Prediksi ekonomi 2027"
+```
+
+---
+
+## History & Hapus
+
+```bash
+cd ~/MiroFish
+
+# Lihat semua
+python3 tools/history-viewer.py env
+
+# Detail simulasi
+python3 tools/history-viewer.py sim sim_xxx
 
 # Hapus
-python3 ~/MiroFish/tools/history-viewer.py hapus sim_xxx
-python3 ~/MiroFish/tools/history-viewer.py clean --force
+python3 tools/history-viewer.py hapus sim_xxx
 
-# Replay simulasi
-python3 ~/MiroFish/tools/simulation-replay.py world sim_xxx
-python3 ~/MiroFish/tools/simulation-replay.py replay sim_xxx
+# Hapus semua
+python3 tools/history-viewer.py clean --force
 ```
 
-## Tools Lengkap
+---
 
-```
-~/MiroFish/tools/
-├── mirofish-input.sh     ← Master input (dokumen/gambar/URL/localhost)
-├── mcp-client.py         ← 11 MCP tools (data real-time GRATIS)
-├── mcp-daemon.py         ← Background daemon (auto-update data)
-├── free-chat.py          ← Chat dengan AI gratis (Groq/Gemini)
-├── history-viewer.py     ← Lihat & hapus history
-├── simulation-replay.py  ← Replay simulasi
-├── process-monitor.py    ← Monitor proses
-├── analyze-image.py      ← Analisis gambar
-├── fetch-url.py          ← Fetch URL
-└── review-localhost.py   ← Review aplikasi localhost
-```
-
-## Konfigurasi
+## Monitor Proses
 
 ```bash
-cp ~/MiroFish/.env.example ~/MiroFish/.env
-nano ~/MiroFish/.env  # Isi API key
+python3 tools/process-monitor.py
 ```
+
+---
+
+## Chat dengan Report Agent
+
+```bash
+curl -X POST http://localhost:5001/api/report/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "simulation_id": "sim_xxx",
+    "message": "Apa prediksi utama?"
+  }'
+```
+
+---
+
+## Wawancara Agen
+
+```bash
+curl -X POST http://localhost:5001/api/simulation/interview \
+  -H "Content-Type: application/json" \
+  -d '{
+    "simulation_id": "sim_xxx",
+    "agent_id": 0,
+    "prompt": "Apa pendapat Anda?"
+  }'
+```
+
+---
+
+## Endpoint API Lengkap
+
+| Method | Endpoint | Fungsi |
+|--------|----------|--------|
+| GET | `/health` | Health check |
+| POST | `/api/graph/ontology/generate` | Upload & ontologi |
+| POST | `/api/graph/build` | Bangun grafik |
+| POST | `/api/simulation/create` | Buat simulasi |
+| POST | `/api/simulation/prepare` | Siapkan lingkungan |
+| POST | `/api/simulation/start` | Jalankan simulasi |
+| GET | `/api/simulation/:id/run-status` | Status simulasi |
+| POST | `/api/report/generate` | Buat laporan |
+| POST | `/api/report/chat` | Chat Report Agent |
+| POST | `/api/simulation/interview` | Wawancara agen |
+| GET | `/api/simulation/history` | Riwayat simulasi |
+| GET | `/api/mcp/status` | Status MCP |
+
+---
 
 ## Troubleshooting
 
 | Masalah | Solusi |
 |---------|--------|
-| Backend down | `cd ~/MiroFish && npm run dev &` |
-| Frontend down | Tunggu 10 detik |
+| Backend mati | `cd ~/MiroFish && npm run dev &` |
+| Frontend mati | Tunggu 10 detik |
 | Port dipakai | `lsof -i :5001` lalu `kill <PID>` |
-| Groq quota | Tunggu 1 menit, 30 RPM free tier |
-| Gemini quota | Tunggu, reset midnight |
-| History duplikat | `history-viewer.py hapus sim_xxx` |
+| ZEP error | Cek `ZEP_API_KEY` di `.env` |
+| Groq quota | Tunggu 1 menit (30 RPM free) |
+| Gemini quota | Tunggu reset midnight |
+
+---
+
+## Lokasi
+
+```
+~/MiroFish/
+├── frontend/     ← Vue 3 (localhost:3000)
+├── backend/      ← Flask (localhost:5001)
+├── tools/        ← CLI tools
+└── skills/       ← Skill ini
+```
