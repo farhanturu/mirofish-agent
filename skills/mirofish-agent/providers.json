@@ -1,0 +1,95 @@
+{
+  "providers": {
+    "groq": {
+      "name": "Groq — Llama 3.3 70B",
+      "base_url": "https://api.groq.com/openai/v1",
+      "model": "llama-3.3-70b-versatile",
+      "api_format": "openai",
+      "auth_type": "bearer",
+      "env_key": "GROQ_API_KEY",
+      "cost": "GRATIS (30 RPM)",
+      "speed": "SANGAT CEPAT",
+      "quality": "⭐⭐⭐⭐⭐",
+      "free": true,
+      "recommended": true,
+      "description": "Gratis, super cepat, ChatGPT-quality",
+      "signup": "https://console.groq.com/keys"
+    },
+    "groq-mixtral": {
+      "name": "Groq — Mixtral 8x7B",
+      "base_url": "https://api.groq.com/openai/v1",
+      "model": "mixtral-8x7b-32768",
+      "api_format": "openai",
+      "auth_type": "bearer",
+      "env_key": "GROQ_API_KEY",
+      "cost": "GRATIS (30 RPM)",
+      "speed": "SANGAT CEPAT",
+      "quality": "⭐⭐⭐⭐",
+      "free": true,
+      "description": "Multilingual bagus, cepat",
+      "signup": "https://console.groq.com/keys"
+    },
+    "gemini": {
+      "name": "Google Gemini 2.0 Flash",
+      "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+      "model": "gemini-2.0-flash",
+      "api_format": "openai",
+      "auth_type": "bearer",
+      "env_key": "GEMINI_API_KEY",
+      "cost": "GRATIS (1500 req/hari)",
+      "speed": "Sedang",
+      "quality": "⭐⭐⭐⭐",
+      "free": true,
+      "description": "Google AI, multimodal, gratis",
+      "signup": "https://aistudio.google.com/apikey"
+    },
+    "atomesus": {
+      "name": "Atomesus Cipher",
+      "base_url": "https://api.atomesus.com/v1",
+      "model": "cipher",
+      "api_format": "openai",
+      "auth_type": "bearer",
+      "env_key": "ATOMESUS_API_KEY",
+      "cost": "Plan-based",
+      "speed": "Tinggi",
+      "quality": "⭐⭐⭐⭐⭐",
+      "free": false,
+      "description": "API OpenAI-compatible, kualitas tinggi",
+      "signup": "https://www.atomesus.com/dashboard"
+    },
+    "together": {
+      "name": "Together AI — Llama 3.3 70B",
+      "base_url": "https://api.together.xyz/v1",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "api_format": "openai",
+      "auth_type": "bearer",
+      "env_key": "TOGETHER_API_KEY",
+      "cost": "GRATIS (60 RPM)",
+      "speed": "Sedang",
+      "quality": "⭐⭐⭐⭐",
+      "free": true,
+      "description": "Open-source models, gratis 60 RPM",
+      "signup": "https://api.together.xyz/settings/api-keys"
+    },
+    "ollama": {
+      "name": "Ollama (Self-Hosted)",
+      "base_url": "http://localhost:11434/v1",
+      "model": "llama3.2",
+      "api_format": "openai",
+      "auth_type": "bearer",
+      "env_key": "OLLAMA_API_KEY",
+      "cost": "GRATIS (lokal)",
+      "speed": "Tergantung hardware",
+      "quality": "⭐⭐⭐⭐",
+      "free": true,
+      "local": true,
+      "description": "Jalankan model lokal, 100% privat",
+      "install": "curl -fsSL https://ollama.com/install.sh | sh && ollama pull llama3.2"
+    }
+  },
+  "defaults": {
+    "primary": "groq",
+    "fallback": "gemini",
+    "notes": "Groq = gratis & cepat, Gemini = gratis cadangan"
+  }
+}

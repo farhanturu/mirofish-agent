@@ -247,6 +247,52 @@ mirofish-agent/
 
 ---
 
+## 🤖 AI Agent Skill — `/mirofish-agent`
+
+Repo ini juga berisi **skill untuk AI agent** yang bisa dipanggil langsung:
+
+```
+/mirofish-agent          # Setup & jalankan MiroFish
+/mirofish-agent start    # Jalankan ulang
+/mirofish-agent config   # Ubah provider/konfigurasi
+```
+
+### Instalasi Skill
+
+```bash
+# Copy skill ke direktori agent
+cp -r skills/mirofish-agent ~/.agents/skills/
+
+# Atau symlink (agar update otomatis)
+ln -sf $(pwd)/skills/mirofish-agent ~/.agents/skills/mirofish-agent
+```
+
+### Fitur Skill
+
+| Fitur | Keterangan |
+|-------|------------|
+| 🚀 One-Click Setup | Clone, install, configure, jalankan otomatis |
+| 🇮🇩 Bahasa Indonesia | UI diterjemahkan lengkap (665+ key) |
+| 🤖 Multi-Provider | Groq, Gemini, Atomesus, Together AI, Ollama |
+| 🌐 MCP Data | 11 tools data real-time |
+| 🏦 Cost Router | Pilih model termurah otomatis |
+| 🧠 9 Agent Skills | Bawaan, aktif otomatis |
+
+### File Skill
+
+```
+skills/mirofish-agent/
+├── SKILL.md           ← Instruksi utama untuk AI agent
+├── README.md          ← Dokumentasi skill
+├── .env.example       ← Template API key
+├── providers.json     ← Registry provider
+├── setup.sh           ← Script instalasi
+├── config.sh          ← Konfigurasi interaktif
+└── patches/           ← Patch UI & backend
+```
+
+---
+
 ## 🐳 Docker
 
 ```bash
